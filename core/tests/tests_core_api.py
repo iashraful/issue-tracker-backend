@@ -17,7 +17,7 @@ def make_url(path):
     return '/api/v1/core/{0}/'.format(path)
 
 
-class TestProfileApi(TestCase):
+class TestCoreApi(TestCase):
     def setUp(self):
         self.client = APIClient()
         # Create Role
