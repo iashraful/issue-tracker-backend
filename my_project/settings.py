@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third Party
+    'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -86,7 +87,7 @@ ROOT_URLCONF = 'my_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -162,6 +163,18 @@ USE_L10N = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "client"),
+]
+
+# Webpack configuration
+WEBPACK_LOADER = {
+	'DEFAULT': {
+	'BUNDLE_DIR_NAME': 'bundles/',
+	'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+	}
+}
 
 # EMAIL SETTINGS
 EMAIL_USE_TLS = True

@@ -19,7 +19,7 @@ class BasicStore extends EventEmitter {
         super();
 
         // Change the url when API server is changed.
-        this.apiUrl = 'http://localhost:8000/';
+        this.apiUrl = '/';
         // All the urls paths
         this.urlPaths = {
             home: '/',
