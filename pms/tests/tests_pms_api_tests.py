@@ -52,8 +52,6 @@ class TestPMSApi(TestCase):
         )
 
     def test_issue_create_api(self):
-        print("\n")
-        print("(*) Testing... Issue Create Functionality.")
         url = make_url('issues')
         project = Project.objects.create(name="Test Project", description="Test Description")
         data = {
@@ -64,38 +62,4 @@ class TestPMSApi(TestCase):
 
         }
         response = self.client.post(url, data)
-        try:
-            self.assertEqual(response.status_code, 201)
-            print("[S] Success")
-        except AssertionError:
-            print("[F] Failed")
-
-    def test_issue_update_api(self):
-        print("\n")
-        print("(*) Testing... Issue Update Functionality.")
-        # url = make_url('issues/{0}/'.format(self.issue.pk))
-        # data = {
-        #     # Here will be data
-        # }
-        # response = self.client.put(url, data)
-
-        try:
-            self.assertEqual(True, True)
-            print("[S] Success")
-        except AssertionError:
-            print("[F] Failed")
-
-    def test_issue_close_api(self):
-        print("\n")
-        print("(*) Testing... Issue Close Functionality.")
-        # url = make_url('issues/{0}/'.format(self.issue.pk))
-        # data = {
-        #     # Here will be data
-        # }
-        # response = self.client.put(url, data)
-
-        try:
-            self.assertEqual(True, True)
-            print("[S] Success")
-        except AssertionError:
-            print("[F] Failed")
+        self.assertEqual(response.status_code, 201)
