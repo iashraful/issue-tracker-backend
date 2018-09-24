@@ -19,7 +19,7 @@ class Settings(BaseEntity):
 
 
 class Confirmation(BaseEntity):
-    user = models.ForeignKey(User, null=True)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     token = models.UUIDField(unique=True, default=uuid.uuid4)
     verified = models.BooleanField(default=False)
 

@@ -1,6 +1,5 @@
 import threading
 
-from autoslug import AutoSlugField
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models
@@ -15,7 +14,7 @@ __author__ = 'Ashraful'
 
 class Project(BaseEntity):
     name = models.CharField(max_length=64)
-    slug = AutoSlugField(populate_from='name', unique=True)
+    slug = models.SlugField(unique=True)
     description = models.TextField(null=True, blank=True)
     website = models.URLField(null=True)
     documents = models.ManyToManyField(Document)
