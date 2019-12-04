@@ -6,7 +6,7 @@ __author__ = 'Ashraful'
 
 
 class Reply(BaseEntity):
-    author = models.ForeignKey('core.Profile')
+    author = models.ForeignKey('core.Profile', null=True, on_delete=models.SET_NULL)
     text = models.CharField(max_length=360)
 
     class Meta:
@@ -14,7 +14,7 @@ class Reply(BaseEntity):
 
 
 class Comment(BaseEntity):
-    author = models.ForeignKey('core.Profile')
+    author = models.ForeignKey('core.Profile', null=True, on_delete=models.SET_NULL)
     text = models.CharField(max_length=512)
     replies = models.ManyToManyField('pms.Reply')
 
@@ -23,7 +23,7 @@ class Comment(BaseEntity):
 
 
 class Conversation(BaseEntity):
-    issue = models.OneToOneField('pms.Issue')
+    issue = models.OneToOneField('pms.Issue', on_delete=models.CASCADE)
     comments = models.ManyToManyField('pms.Comment')
 
     class Meta:
